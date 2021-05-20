@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,12 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  panelOpenState=false;
   
-  constructor()
+  constructor(private router: Router)
     {
     }
 
   ngOnInit() {  
     
+  }
+
+  goToCreateUser() {
+    this.router.navigate(['/details']);
   }
 }
