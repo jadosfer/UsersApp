@@ -1,15 +1,8 @@
-import { AppRoutingModule } from './../../app-routing/app-routing.module';
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef, Output, EventEmitter, Inject } from '@angular/core';
-
-
-import { NgForm } from '@angular/forms';
-//import * as $ from "jquery";
-//import { FilterPipe } from '../../../pipes/filter.pipe';
-import { Observable, Observer } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UsersService } from '../../services/users.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {MatExpansionModule} from '@angular/material/expansion';
+
+
 
 import { Router } from '@angular/router';
 
@@ -31,7 +24,7 @@ export class MainComponent implements OnInit
  
   showLoading: boolean = true;
 
-  constructor(private usersService: UsersService, public dialog: MatDialog, 
+  constructor(private usersService: UsersService, 
     private router: Router)
   {    
   }
@@ -56,12 +49,9 @@ export class MainComponent implements OnInit
         {
           this.users = response;          
           this.usersService.updateSessionStorage(response);
-          this.showLoading = false;
-          //this.calculateNoOfPages();
+          this.showLoading = false;      
         });
     }
-
-    //this.clientLocations = this.clientLocationsService.getClientLocations();
   }
 
   onAnchorClick(index: number) {
@@ -79,26 +69,8 @@ export class MainComponent implements OnInit
   }
 
   onDeleteUser(id: number, i: number) {
-    this.usersService.deleteUser(id);
-    // let index = this.users.findIndex(function (users) {
-    //   return users.id === id;
-    // });
-    // this.users.splice(index, 1); 
+    this.usersService.deleteUser(id);    
     this.users.splice(i, 1); 
     this.usersService.updateSessionStorage(this.users);   
   }
-
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(CreateUserDialogComponent, {
-  //     data: "Create User"
-  //   }
-  //   );
-  //     dialogRef.afterClosed().subscribe(res => {console.log(res);
-  //     if (res) {
-  //       console.log("mensaje del yes")
-  //     }
-    
-  //   });
-  // }
-  
 }

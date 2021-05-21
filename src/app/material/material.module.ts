@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatPaginatorModule,
+    MatToolbarModule,    
     MatButtonModule,
-    MatCardModule    
+    MatCardModule,
+    MatDividerModule,
+    MatListModule  
   ],
   exports: [
-    MatToolbarModule,
-    MatPaginatorModule,
+    MatToolbarModule,    
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

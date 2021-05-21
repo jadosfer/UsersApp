@@ -4,8 +4,7 @@
 <div class="row">    
     <div class="col-md-8 col-xl-6">  
      <form [formGroup]="signUpForm" (ngSubmit)="onSubmitClick()">
-      <div class="card mt-1">
-        
+      <div class="card mt-1">      
   
         <div class="card-body">
           <form [formGroup]="signUpForm">
@@ -117,34 +116,3 @@
     </form>
     </div>
   </div>
-
-
-<!--
-<form [formGroup]="usersService.form" class="normal-form">
-    <mat-grid-list cols="2" rowHeight="300px">
-      <mat-grid-tile>
-        <div class="controles-container">
-          <input type="hidden" formControlName="$key">
-          <mat-form-field>
-            <input formControlName="name" matInput placeholder="Full Name*">
-            <mat-error>This field is mandatory.</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input formControlName="username" matInput placeholder="User Name*">
-            <mat-error>This field is mandatory.</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input formControlName="email" matInput placeholder="Email">
-            <mat-error>Invalid email address.</mat-error>
-          </mat-form-field>
-
-          <div class="button-row">
-            <button mat-raised-button color="primary" type="submit" [disabled]="usersService.form.invalid">Submit</button>
-            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-          </div>
-        
-        </div>
-      </mat-grid-tile>      
-    </mat-grid-list>
-  </form>
-  -->

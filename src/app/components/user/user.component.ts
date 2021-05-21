@@ -1,6 +1,6 @@
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
 
@@ -47,8 +47,7 @@ export class UserComponent implements OnInit {
   }
 
   onSubmitClick()
-  {
-    //Display current form value
+  {    
     this.submitted = true;    
 
     if (this.signUpForm.valid) {
@@ -67,8 +66,7 @@ export class UserComponent implements OnInit {
       this.newUser.company.name = this.signUpForm.get("compName").value;
       this.newUser.company.catchPhrase = this.signUpForm.get("compCatchPhrase").value;
       this.newUser.company.bs = this.signUpForm.get("compBs").value;
-
-      //this.usersService.newUser = this.newUser;      
+         
       this.usersService.createUser(this.newUser);
       this.router.navigateByUrl('/main');
     }
