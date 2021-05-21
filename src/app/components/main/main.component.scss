@@ -7,25 +7,7 @@ h1 {
     padding:15px;
 }
 
-
-mat-expansion-panel {
-    background-color:rgb(63, 81, 181);
+mat-card-title {    
+    color:rgb(63, 81, 181);      
 }
 
-
-.example-spacer {
-    flex: 1 1 auto;
-  }  
-
-.btn {
-    margin: 5px
-}
-
-#options {
-    color: #000;
-    margin:10px
-}
-
-#optionButton {
-    margin:5px;
-}

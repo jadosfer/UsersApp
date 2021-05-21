@@ -1,6 +1,6 @@
 import { Geo } from "./geo";
 
-export class Adress {
+export class Address {
     street: string;
     suite: string;
     city: string;

@@ -1,12 +1,13 @@
-import { Adress } from './adress';
+import { Address } from './address';
 import { Company } from './company';
 
 
 export class User {
     id: number;
     name: string;
+    username: string;
     email: string;
-    adress: Adress; 
+    address: Address; 
     phone: string;
     website: string;
     company: Company;
@@ -14,8 +15,9 @@ export class User {
     constructor() {
         this.id = null;
         this.name = null;
+        this.username = null;
         this.email = null;
-        this.adress = new Adress();
+        this.address = new Address();
         this.phone = null;
         this.website = null;
         this.company = new Company();

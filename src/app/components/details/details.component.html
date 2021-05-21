@@ -1,3 +1,41 @@
-<h1>Details:</h1><br>
-<h2>{{this.user.name}}</h2>
-<h2>{{this.user.email}}</h2>
+<mat-toolbar color="primary">
+    <button mat-raised-button color="accent" (click)="onBackClick()">BACK TO MAIN</button>  
+</mat-toolbar>
+<mat-card id="header">
+    <mat-card-title>Details</mat-card-title>           
+</mat-card> 
+<div>  
+    <mat-card>
+        <mat-card-title>Full Name:</mat-card-title>
+        Name: {{this.user.name}}<br>
+        Username: {{this.user.username}}        
+    </mat-card>
+    <mat-card>        
+        <mat-card-title>Contact:</mat-card-title>
+        Email: {{this.user.email}}<br>
+        Phone: {{this.user.phone}}<br>
+        Website: {{this.user.website}}  
+        </mat-card>
+    <mat-card>
+        <mat-card-title>Address:</mat-card-title>
+        Street: {{this.user.address.street}}<br>
+        Suite: {{this.user.address.suite}}<br>  
+        City: {{this.user.address.city}}<br>
+        Zipcode: {{this.user.address.zipcode}}   
+    </mat-card>
+    <mat-card>
+        <mat-card-title>Geolocation:</mat-card-title>
+        Latitude: {{this.user.address.geo.lat}}<br>
+        Longitude: {{this.user.address.geo.lng}}  
+    </mat-card>    
+    <mat-card>
+        <mat-card-title>Company info:</mat-card-title>
+        Name: {{this.user.company.name}}<br>
+        {{this.user.company.catchPhrase}}<br>
+        {{this.user.company.bs}}
+    </mat-card>
+</div>
+
+
+
+  

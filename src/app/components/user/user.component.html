@@ -1,1 +1,150 @@
-<p>user works!</p>
+<mat-toolbar color="primary">
+    NEW USER
+    </mat-toolbar>
+<div class="row">    
+    <div class="col-md-8 col-xl-6">  
+     <form [formGroup]="signUpForm" (ngSubmit)="onSubmitClick()">
+      <div class="card mt-1">
+        
+  
+        <div class="card-body">
+          <form [formGroup]="signUpForm">
+
+            <div class="form-group form-row">
+                <label for="id" class="col-md-4 col-form-label">ID:</label>
+                <div class="col-md-8">
+                  <input type="text" name="id" id="id" placeholder="id" class="form-control" formControlName="id">
+                  <span class="text-danger" *ngIf="(signUpForm.get('id').dirty || signUpForm.get('id').touched || submitted) && signUpForm.get('id').errors?.required">ID can't be blank</span>
+                </div>
+              </div>    
+            <div class="form-group form-row">
+              <label for="name" class="col-md-4 col-form-label">Name:</label>
+              <div class="col-md-8">
+                <input type="text" name="name" id="name" placeholder="name" class="form-control" formControlName="name">
+                <span class="text-danger" *ngIf="(signUpForm.get('name').dirty || signUpForm.get('name').touched || submitted) && signUpForm.get('name').errors?.required">Name can't be blank</span>
+              </div>
+            </div>  
+            <div class="form-group form-row">
+              <label for="username" class="col-md-4 col-form-label">User Name:</label>
+              <div class="col-md-8">
+                <input type="text" name="username" id="username" placeholder="User Name" class="form-control" formControlName="username">
+                <span class="text-danger" *ngIf="(signUpForm.get('username').dirty || signUpForm.get('username').touched || submitted) && signUpForm.get('username').errors?.required">User Name can't be blank</span>                
+              </div>
+            </div>  
+            <div class="form-group form-row">
+              <label for="email" class="col-md-4 col-form-label">Email:</label>
+              <div class="col-md-8">
+                <input type="text" name="email" id="email" placeholder="Email" class="form-control" formControlName="email">
+                <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').errors?.required">Email can't be blank</span>
+              </div>
+            </div>  
+            <div class="form-group form-row">
+              <label for="addressStreet" class="col-md-4 col-form-label">Street:</label>
+              <div class="col-md-8">
+                <input type="text" name="addressStreet" id="addressStreet" placeholder="Street" class="form-control" formControlName="addressStreet">
+              </div>
+            </div>  
+            <div class="form-group form-row">
+              <label for="addressSuite" class="col-md-4 col-form-label">Suite:</label>
+              <div class="col-md-8">
+                <input type="text" name="addressSuite" id="addressSuite" placeholder="Suite" class="form-control" formControlName="addressSuite">
+              </div>
+            </div>
+            <div class="form-group form-row">
+                <label for="addressCity" class="col-md-4 col-form-label">City:</label>
+                <div class="col-md-8">
+                  <input type="text" name="addressCity" id="addressCity" placeholder="City" class="form-control" formControlName="addressCity">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="addressZipcode" class="col-md-4 col-form-label">Zipcode:</label>
+                <div class="col-md-8">
+                  <input type="text" name="addressZipcode" id="addressZipcode" placeholder="Zipcode" class="form-control" formControlName="addressZipcode">
+                </div>
+              </div>
+
+              <div class="form-group form-row">
+                <label for="addressGeoLat" class="col-md-4 col-form-label">Latitude:</label>
+                <div class="col-md-8">
+                  <input type="text" name="addressGeoLat" id="addressGeoLat" placeholder="Latitude" class="form-control" formControlName="addressGeoLat">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="addressGeoLng" class="col-md-4 col-form-label">Longitude:</label>
+                <div class="col-md-8">
+                  <input type="text" name="addressGeoLng" id="addressGeoLng" placeholder="Longitude" class="form-control" formControlName="addressGeoLng">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="phone" class="col-md-4 col-form-label">Phone:</label>
+                <div class="col-md-8">
+                  <input type="text" name="phone" id="phone" placeholder="Phone" class="form-control" formControlName="phone">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="website" class="col-md-4 col-form-label">Website:</label>
+                <div class="col-md-8">
+                  <input type="text" name="website" id="website" placeholder="Website" class="form-control" formControlName="website">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="compName" class="col-md-4 col-form-label">Company Name:</label>
+                <div class="col-md-8">
+                  <input type="text" name="compName" id="compName" placeholder="Company Name" class="form-control" formControlName="compName">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="compCatchPhrase" class="col-md-4 col-form-label">Company Catch Phrase:</label>
+                <div class="col-md-8">
+                  <input type="text" name="compCatchPhrase" id="compCatchPhrase" placeholder="Company Catch Phrase" class="form-control" formControlName="compCatchPhrase">
+                </div>
+              </div>
+              <div class="form-group form-row">
+                <label for="compBs" class="col-md-4 col-form-label">Company BS:</label>
+                <div class="col-md-8">
+                  <input type="text" name="compBs" id="compBs" placeholder="Company BS" class="form-control" formControlName="compBs">
+                </div>
+              </div>
+  
+          </form>  
+         
+        </div>
+            <div class="card-footer">
+            <button mat-raised-button color="accent">CREATE USER</button>            
+            <button mat-stroked-button color="accent" (click)="onCancelClick()">CANCEL</button>    
+        </div>  
+      </div>
+    </form>
+    </div>
+  </div>
+
+
+<!--
+<form [formGroup]="usersService.form" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="300px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key">
+          <mat-form-field>
+            <input formControlName="name" matInput placeholder="Full Name*">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="username" matInput placeholder="User Name*">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="email" matInput placeholder="Email">
+            <mat-error>Invalid email address.</mat-error>
+          </mat-form-field>
+
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="usersService.form.invalid">Submit</button>
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+        
+        </div>
+      </mat-grid-tile>      
+    </mat-grid-list>
+  </form>
+  -->

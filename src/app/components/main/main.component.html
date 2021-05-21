@@ -1,26 +1,15 @@
-<div id="container">
-    <mat-expansion-panel>    
-      <mat-expansion-panel-header> 
-        <mat-panel-description>
-          <button mat-icon-button id="optionButton">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <h2 id="options">OPTIONS</h2>            
-        </mat-panel-description>     
-      </mat-expansion-panel-header> 
-        <div class="form-group form-row">
-            <button class="btn btn-secondary" data-toggle="modal" data-target="#newModal" (click)="openDialog()">CREATE USER</button>
-            <button class="btn btn-secondary" data-toggle="modal" data-target="#newModal" >DELETE USER</button>             
-        </div>
-      </mat-expansion-panel> 
-    
-</div>
-  
+<mat-toolbar color="primary">
+  <button mat-raised-button color="accent" (click)="createUser()">CREATE USER</button>  
+  </mat-toolbar>
 
-<mat-list>
-    <h1>USERS</h1>
+<mat-card>
+  <mat-card-title>USERS</mat-card-title>           
+</mat-card> 
+
+<mat-list> 
     <mat-list-item *ngFor="let user of users; last as last; let i = index">      
-        <h2 mat-line><a routerLink="../details" (click)='onAnchorClick(i)'>#{{user.id}}&nbsp;{{user.email}}</a></h2>              
+        <h2 mat-line><a routerLink="../details" (click)='onAnchorClick(i)'>#{{i+1}}&nbsp;{{user.email}}</a></h2>              
+        <button  mat-stroked-button color="accent" (click)="onDeleteUser(user.id, i)">DELETE USER</button>             
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
     <mat-divider></mat-divider>            
