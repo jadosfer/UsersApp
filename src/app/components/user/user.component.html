@@ -30,8 +30,9 @@
             <div class="form-group form-row">
               <label for="email" class="col-md-4 col-form-label">Email:</label>
               <div class="col-md-8">
-                <input type="text" name="email" id="email" placeholder="Email" class="form-control" formControlName="email">
-                <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').errors?.required">Email can't be blank</span>
+                <input type="email" name="email" id="email" placeholder="Email" class="form-control" formControlName="email">
+                <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').errors?.required">Email can't be blank</span>                
+                <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').invalid">Email is invalid</span>   
               </div>
             </div>  
             <div class="form-group form-row">

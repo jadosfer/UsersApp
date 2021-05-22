@@ -29,8 +29,8 @@ export class UserComponent implements OnInit {
       
       id: [null, [ Validators.required]],
       name: [null, [ Validators.required]],
-      username: [null, [ Validators.required]],    
-      email: [null, [ Validators.required]],  
+      username: [null, [ Validators.required]],          
+      email: [null, [ Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       addressStreet: [null],
       addressSuite: [null],
       addressCity: [null],     
