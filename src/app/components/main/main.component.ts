@@ -21,6 +21,7 @@ export class MainComponent implements OnInit
 {
   users: User[] = [];
   newUser: User; 
+  visible: boolean = false;
  
   showLoading: boolean = true;
 
@@ -35,6 +36,13 @@ export class MainComponent implements OnInit
       (response: User) =>
       {
         this.users.push(response);
+        sessionStorage.setItem('users', JSON.stringify(this.users));
+      });
+    
+    this.usersService.CancelObservable.subscribe(
+      (response: boolean) =>
+      {
+        this.visible = response;
         sessionStorage.setItem('users', JSON.stringify(this.users));
       });
     
@@ -58,14 +66,8 @@ export class MainComponent implements OnInit
     this.usersService.showUser = this.users[index];
   }
   
-  createUser() {
-    if (this.users.length > 0) {
-      this.usersService.lastId = this.users[this.users.length-1].id;
-    }
-    else {
-      this.usersService.lastId = 0;
-    }
-    this.router.navigateByUrl('/user');
+  createUser() {    
+    this.visible =true; 
   }
 
   onDeleteUser(id: number, i: number) {

@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
 
   signUpForm: FormGroup;
   submitted: boolean;
-  newUser: User;
+  newUser: User;  
 
   constructor(public usersService: UsersService, private formBuilder: FormBuilder, 
     private router: Router) {
@@ -46,6 +46,10 @@ export class UserComponent implements OnInit {
     
   }
 
+  ngOnDestroy() {
+
+  }
+
   onSubmitClick()
   {    
     this.submitted = true;    
@@ -72,9 +76,8 @@ export class UserComponent implements OnInit {
     }
   }
 
-  onCancelClick() {
-    console.log("works");
-    this.router.navigateByUrl('/main');
+  onCancelClick() {      
+    this.usersService.cancelCreateUser(); 
   }
 }
 

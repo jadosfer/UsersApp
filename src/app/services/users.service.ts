@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { User } from '../models/user';
 import { map } from "rxjs/operators";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 
 @Injectable({
@@ -13,19 +12,23 @@ export class UsersService {
 
   public UserObservable: Observable<User>;
   private MyObservers: Observer<User>[] = [];
+  public CancelObservable: Observable<boolean>;
+  private CancelObservers: Observer<boolean>[] = [];
+  
   
   newUser: User = new User;
-  showUser: User;
-  lastId: number;
+  showUser: User; 
+  visible: boolean = false;
   
 
   constructor(private httpClient : HttpClient) {    
     this.UserObservable = Observable.create((observer: Observer<User>)=>{
       this.MyObservers.push(observer);
     }); 
+    this.CancelObservable = Observable.create((cancelObserver: Observer<boolean>)=>{
+      this.CancelObservers.push(cancelObserver);
+    }); 
   }
-
-   
     
   getAllUsers() : Observable<User[]>
   {
@@ -41,44 +44,26 @@ export class UsersService {
   {    
     return this.httpClient.delete<User>("https://jsonplaceholder.typicode.com/posts/" + id, { responseType: "json" });    
   }
-
-  deleteProject(ProjectID: number) : Observable<string>
-  {
-    return this.httpClient.delete<string>("/api/projects?ProjectID=" + ProjectID);
-  }
-
+  
   createUser(newUser?: User) {
     this.newUser = newUser;
     for (let i=0;i<this.MyObservers.length;i++) {
       this.MyObservers[i].next(this.newUser);    
-    }    
+    }  
+    for (let i=0;i<this.MyObservers.length;i++) {  
+      this.CancelObservers[i].next(false); 
+      }  
+  } 
+
+  cancelCreateUser() {    
+    for (let i=0;i<this.MyObservers.length;i++) {  
+    this.CancelObservers[i].next(false); 
+    }     
   }
 
   updateSessionStorage(users: User[]) {
     sessionStorage.setItem('users', JSON.stringify(users));
   }
-
-
-  // insertUser(newUser: User) : Observable<User>
-  // {
-  //   var requestHeaders = new HttpHeaders();
-  //   requestHeaders = requestHeaders.set("X-XSRF-TOKEN", sessionStorage.XSRFRequestToken);
-  //   return this.httpClient.post<User>("/api/Users", newUser, { headers: requestHeaders, responseType: "json" });
-  // }
-
-  // updateUser(existingUser: User) : Observable<User>
-  // {
-  //   return this.httpClient.put<User>("/api/Users", existingUser, { responseType: "json" });
-  // }
-
-  // deleteUser(id: number) : Observable<string>
-  // {
-  //   return this.httpClient.delete<string>("/api/Users?UserID=" + id);
-  // }
-
-  // SearchUsers(searchBy: string, searchText: string) : Observable<User[]>
-  // {
-  //   return this.httpClient.get<User[]>("/api/Users/search/" + searchBy + "/" + searchText, { responseType: "json" });
-  // }
+ 
 }
 

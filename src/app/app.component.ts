@@ -18,7 +18,5 @@ export class AppComponent {
     
   }
 
-  goToCreateUser() {
-    this.router.navigate(['/details']);
-  }
+ 
 }
