@@ -16,7 +16,7 @@ export class DetailsComponent implements OnInit {
     this.user = this.usersService.showUser;
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
    }
 
    onBackClick() {

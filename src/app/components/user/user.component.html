@@ -31,7 +31,7 @@
               <label for="email" class="col-md-4 col-form-label">Email:</label>
               <div class="col-md-8">
                 <input type="email" name="email" id="email" placeholder="Email" class="form-control" formControlName="email">
-                <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').errors?.required">Email can't be blank</span>                
+                <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').errors?.required">Email can't be blank</span><br>                
                 <span class="text-danger" *ngIf="(signUpForm.get('email').dirty || signUpForm.get('email').touched || submitted) && signUpForm.get('email').invalid">Email is invalid</span>   
               </div>
             </div>  
@@ -107,7 +107,7 @@
          
         </div>
             <div class="card-footer">
-            <button mat-raised-button color="accent">CREATE USER</button>            
+            <button mat-raised-button color="accent">CONFIRM</button>              
             <button mat-stroked-button color="accent" (click)="onCancelClick()">CANCEL</button>    
         </div>  
       </div>

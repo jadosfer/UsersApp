@@ -6,12 +6,6 @@ import { UsersService } from '../../services/users.service';
 
 import { Router } from '@angular/router';
 
-
-export interface DialogData {
-  name: string;
-  email: string;
-}
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -21,8 +15,7 @@ export class MainComponent implements OnInit
 {
   users: User[] = [];
   newUser: User; 
-  visible: boolean = false;
- 
+  visible: boolean = false; 
   showLoading: boolean = true;
 
   constructor(private usersService: UsersService, 
@@ -32,11 +25,23 @@ export class MainComponent implements OnInit
   
   ngOnInit()
   {
-    this.usersService.UserObservable.subscribe(
+    this.usersService.CreateObservable.subscribe(
       (response: User) =>
       {
         this.users.push(response);
         sessionStorage.setItem('users', JSON.stringify(this.users));
+        this.visible = false;
+      });
+
+    this.usersService.UpdateObservable.subscribe(
+      (response: User) =>
+      { 
+        
+        let index = this.users.findIndex(i => i.id === this.usersService.id)
+        this.users[index] = response;
+        console.log(this.users);
+        sessionStorage.setItem('users', JSON.stringify(this.users));
+        this.visible = false;
       });
     
     this.usersService.CancelObservable.subscribe(
@@ -66,13 +71,21 @@ export class MainComponent implements OnInit
     this.usersService.showUser = this.users[index];
   }
   
-  createUser() {    
-    this.visible =true; 
+  onCreateUser(user?:User) {    
+    this.visible = true; 
+    this.usersService._updateUser = null;
+    this.usersService.updateCreate = false;
   }
 
   onDeleteUser(id: number, i: number) {
     this.usersService.deleteUser(id);    
     this.users.splice(i, 1); 
     this.usersService.updateSessionStorage(this.users);   
+  }
+
+  onUpdateUser(id: number, i: number) {
+    this.usersService._updateUser = this.users[i];
+    this.visible = true;    
+    this.usersService.updateCreate = true;
   }
 }

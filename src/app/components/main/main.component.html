@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-raised-button color="accent" (click)="createUser()">CREATE USER</button>  
+  <button *ngIf="!this.visible" mat-raised-button color="accent" (click)="onCreateUser()">CREATE USER</button>  
   </mat-toolbar>
 
 <app-user *ngIf="this.visible"></app-user>
@@ -11,6 +11,7 @@
 <mat-list *ngIf="!this.visible"> 
     <mat-list-item *ngFor="let user of users; last as last; let i = index">      
         <h2 mat-line><a routerLink="../details" (click)='onAnchorClick(i)'>{{i+1}})&nbsp;{{user.email}}</a></h2>              
+        <button id="update" mat-stroked-button color="accent" (click)="onUpdateUser(user.id, i)">UPDATE USER</button>             
         <button id="delete" mat-stroked-button color="accent" (click)="onDeleteUser(user.id, i)">DELETE USER</button>             
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
