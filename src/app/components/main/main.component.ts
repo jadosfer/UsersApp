@@ -24,7 +24,7 @@ export class MainComponent implements OnInit
   }
   
   ngOnInit()
-  {
+  {    
     this.usersService.CreateObservable.subscribe(
       (response: User) =>
       {
@@ -35,8 +35,7 @@ export class MainComponent implements OnInit
 
     this.usersService.UpdateObservable.subscribe(
       (response: User) =>
-      { 
-        
+      {         
         let index = this.users.findIndex(i => i.id === this.usersService.id)
         this.users[index] = response;        
         sessionStorage.setItem('users', JSON.stringify(this.users));
@@ -76,13 +75,13 @@ export class MainComponent implements OnInit
     this.usersService.updateCreate = false;
   }
 
-  onDeleteUser(id: number, i: number) {
+  onDeleteUserClick(id: number, i: number) {
     this.usersService.deleteUser(id);    
     this.users.splice(i, 1); 
     this.usersService.updateSessionStorage(this.users);   
   }
 
-  onUpdateUser(id: number, i: number) {
+  onUpdateUserClick(id: number, i: number) {    
     this.usersService._updateUser = this.users[i];
     this.visible = true;    
     this.usersService.updateCreate = true;

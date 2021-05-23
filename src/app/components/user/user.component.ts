@@ -19,8 +19,7 @@ export class UserComponent implements OnInit {
   updateUser: User;
 
   constructor(public usersService: UsersService, private formBuilder: FormBuilder, 
-    private router: Router) {
-
+    private router: Router) {  
     this.user = new User;   
    }
 
@@ -44,10 +43,7 @@ export class UserComponent implements OnInit {
       compCatchPhrase: [null],
       compBs: [null]
     });
-    
-  }
 
-  ngAfterContentInit() {
     this.updateUser = this.usersService._updateUser;
     if (this.usersService._updateUser !== null) {     
       
@@ -67,6 +63,7 @@ export class UserComponent implements OnInit {
       this.signUpForm.get("compCatchPhrase").setValue(this.updateUser.company.catchPhrase);
       this.signUpForm.get("compBs").setValue(this.updateUser.company.bs);
     }
+    
   }
 
   ngOnDestroy() {
@@ -74,10 +71,10 @@ export class UserComponent implements OnInit {
   }
 
   onSubmitClick()
-  {    
+  {     
     this.submitted = true;    
 
-    if (this.signUpForm.valid) {
+    if (this.signUpForm.valid) {      
       this.user.id = this.signUpForm.get("id").value;
       this.user.name = this.signUpForm.get("name").value;
       this.user.username = this.signUpForm.get("username").value;      

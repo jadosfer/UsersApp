@@ -25,11 +25,12 @@ export class UsersService {
   id: number = 0;
   
 
-  constructor(private httpClient : HttpClient) {    
+  constructor(private httpClient : HttpClient) {      
     this.CreateObservable = Observable.create((observer: Observer<User>)=>{
       this.CreateObservers.push(observer);
-    }); 
-    this.UpdateObservable = Observable.create((observer: Observer<User>)=>{
+    });
+    
+    this.UpdateObservable = Observable.create((observer: Observer<User>)=>{     
       this.UpdateObservers.push(observer);
     }); 
     this.CancelObservable = Observable.create((cancelObserver: Observer<boolean>)=>{
@@ -60,7 +61,7 @@ export class UsersService {
   } 
 
   updateUser(id: number, user: User): Observable<User>
-  {
+  {  
     this._updateUser = user;
     for (let i=0;i<this.UpdateObservers.length;i++) {
       this.UpdateObservers[i].next(this._updateUser);    

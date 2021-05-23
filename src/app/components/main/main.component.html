@@ -1,21 +1,23 @@
+ 
 <mat-toolbar color="primary">
   <button *ngIf="!this.visible" mat-raised-button color="accent" (click)="onCreateUser()">CREATE USER</button>  
-  </mat-toolbar>
+</mat-toolbar>
+
+<div *ngIf="!this.visible">
+  <mat-card>
+    <mat-card-title>USERS</mat-card-title>           
+  </mat-card> 
+  <mat-list> 
+      <mat-list-item *ngFor="let user of users; last as last; let i = index">              
+          <h2 mat-line><a routerLink="../details" (click)='onAnchorClick(i)'>{{i+1}})&nbsp;{{user.email}}</a></h2>              
+          <div id="buttons">
+            <button id="update" mat-stroked-button color="accent" (click)="onUpdateUserClick(user.id, i)">UPDATE USER</button><mat-icon aria-hidden="false" >update</mat-icon>             
+            <button id="delete" mat-stroked-button color="accent" (click)="onDeleteUserClick(user.id, i)">DELETE USER</button><mat-icon aria-hidden="false">delete</mat-icon>            
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </div>        
+      </mat-list-item>    
+      <mat-divider></mat-divider>            
+  </mat-list>
+</div>
 
 <app-user *ngIf="this.visible"></app-user>
-
-<mat-card *ngIf="!this.visible">
-  <mat-card-title>USERS</mat-card-title>           
-</mat-card> 
-
-<mat-list *ngIf="!this.visible"> 
-    <mat-list-item *ngFor="let user of users; last as last; let i = index">              
-        <h2 mat-line><a routerLink="../details" (click)='onAnchorClick(i)'>{{i+1}})&nbsp;{{user.email}}</a></h2>              
-        <div id="buttons">
-          <button id="update" mat-stroked-button color="accent" (click)="onUpdateUser(user.id, i)">UPDATE USER</button><mat-icon aria-hidden="false" >update</mat-icon>             
-          <button id="delete" mat-stroked-button color="accent" (click)="onDeleteUser(user.id, i)">DELETE USER</button><mat-icon aria-hidden="false">delete</mat-icon>            
-          <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-        </div>        
-    </mat-list-item>    
-    <mat-divider></mat-divider>            
-</mat-list>
