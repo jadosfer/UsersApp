@@ -66,10 +66,6 @@ export class UserComponent implements OnInit {
     
   }
 
-  ngOnDestroy() {
-
-  }
-
   onSubmitClick()
   {     
     this.submitted = true;    
