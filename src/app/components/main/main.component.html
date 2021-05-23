@@ -9,11 +9,13 @@
 </mat-card> 
 
 <mat-list *ngIf="!this.visible"> 
-    <mat-list-item *ngFor="let user of users; last as last; let i = index">      
+    <mat-list-item *ngFor="let user of users; last as last; let i = index">              
         <h2 mat-line><a routerLink="../details" (click)='onAnchorClick(i)'>{{i+1}})&nbsp;{{user.email}}</a></h2>              
-        <button id="update" mat-stroked-button color="accent" (click)="onUpdateUser(user.id, i)">UPDATE USER</button>             
-        <button id="delete" mat-stroked-button color="accent" (click)="onDeleteUser(user.id, i)">DELETE USER</button>             
-        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-    </mat-list-item>
+        <div id="buttons">
+          <button id="update" mat-stroked-button color="accent" (click)="onUpdateUser(user.id, i)">UPDATE USER</button><mat-icon aria-hidden="false" >update</mat-icon>             
+          <button id="delete" mat-stroked-button color="accent" (click)="onDeleteUser(user.id, i)">DELETE USER</button><mat-icon aria-hidden="false">delete</mat-icon>            
+          <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+        </div>        
+    </mat-list-item>    
     <mat-divider></mat-divider>            
 </mat-list>

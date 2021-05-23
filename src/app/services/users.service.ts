@@ -59,13 +59,16 @@ export class UsersService {
     }    
   } 
 
-  updateUser(user?: User) {
+  updateUser(id: number, user: User): Observable<User>
+  {
     this._updateUser = user;
     for (let i=0;i<this.UpdateObservers.length;i++) {
       this.UpdateObservers[i].next(this._updateUser);    
-    } 
+    }     
+    return this.httpClient.delete<User>("https://jsonplaceholder.typicode.com/posts/" + id, { responseType: "json" });    
   }
 
+  
    
   cancelCreateUser() {    
     for (let i=0;i<this.CancelObservers.length;i++) {  

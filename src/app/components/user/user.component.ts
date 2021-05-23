@@ -49,9 +49,8 @@ export class UserComponent implements OnInit {
 
   ngAfterContentInit() {
     this.updateUser = this.usersService._updateUser;
-    if (this.usersService._updateUser !== null) {      
-      console.log(this.updateUser.name);      
-      console.log(this.usersService._updateUser.name);
+    if (this.usersService._updateUser !== null) {     
+      
       this.signUpForm.get("id").setValue(this.updateUser.id);
       this.signUpForm.get("name").setValue(this.updateUser.name);
       this.signUpForm.get("username").setValue(this.updateUser.username);      
@@ -96,7 +95,7 @@ export class UserComponent implements OnInit {
       this.user.company.bs = this.signUpForm.get("compBs").value;
       this.usersService.id = this.user.id; 
       if (this.usersService.updateCreate) {
-        this.usersService.updateUser(this.user);        
+        this.usersService.updateUser(this.user.id, this.user);        
       }
       else {
         this.usersService.createUser(this.user); 

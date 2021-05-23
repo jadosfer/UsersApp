@@ -38,8 +38,7 @@ export class MainComponent implements OnInit
       { 
         
         let index = this.users.findIndex(i => i.id === this.usersService.id)
-        this.users[index] = response;
-        console.log(this.users);
+        this.users[index] = response;        
         sessionStorage.setItem('users', JSON.stringify(this.users));
         this.visible = false;
       });
